@@ -17,12 +17,6 @@ function App() {
         }}
       >
       <Navbar/>
- 
-        
-      {/* <div class="card" style="width: 18rem;"> 
-      <h1 sx={{color:'white'}} > Push Notification </h1> 
-      </div>
-        */}
 
       <div className="card">
   <div className="card-body">
