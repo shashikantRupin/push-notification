@@ -1,9 +1,9 @@
-self.addEventListener('push', function(event) {
-    var notification = event.data.json();
-    event.waitUntil(
-      self.registration.showNotification(notification.title, notification.options)
-    );
-  });
+// self.addEventListener('push', function(event) {
+//     var notification = event.data.json();
+//     event.waitUntil(
+//       self.registration.showNotification(notification.title, notification.options)
+//     );
+//   });
   
 
 //   if ('serviceWorker' in navigator) {

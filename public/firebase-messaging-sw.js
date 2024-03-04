@@ -1,40 +1,39 @@
-importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');
+// Give the service worker access to Firebase Messaging.
+// Note that you can only use Firebase Messaging here. Other Firebase libraries
+// are not available in the service worker.
+importScripts("https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js");
+importScripts(
+  "https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"
+);
 
+// Initialize the Firebase app in the service worker by passing in
+// your app's Firebase config object.
+// https://firebase.google.com/docs/web/setup#config-object
 firebase.initializeApp({
-    messagingSenderId: '230575406452' 
+  apiKey: "AIzaSyBfBVbZUZr2v_OhS2ByFWSHBvl5hZfMS88",
+  authDomain: "pushnotification-65167.firebaseapp.com",
+  projectId: "pushnotification-65167",
+  storageBucket: "pushnotification-65167.appspot.com",
+  messagingSenderId: "763187989347",
+  appId: "1:763187989347:web:51fbc7623a089aa077a156",
+  measurementId: "G-FNJ1EWQX23",
 });
 
+// Retrieve an instance of Firebase Messaging so that it can handle background
+// messages.
 const messaging = firebase.messaging();
 
-//__________________________________________________________________________________________________
+messaging.onBackgroundMessage((payload) => {
+  console.log(
+    "[firebase-messaging-sw.js] Received background message ",
+    payload
+  );
+  // Customize notification here
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: payload.notification.image,
+  };
 
-
-// if upper code is not working then use this code 
-
-// importScripts(
-//     "https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"
-//   );
-//   importScripts(
-//     "https://www.gstatic.com/firebasejs/9.17.1/firebase-messaging-compat.js"
-//   );
-//   const firebaseConfig = {
-//     apiKey: "AIzaSyDZLtUPRAH2QiydAymfRf4457j7NyUv8SU",
-//     authDomain: "pwa-app-2b96d.firebaseapp.com",
-//     projectId: "pwa-app-2b96d",
-//     storageBucket: "pwa-app-2b96d.appspot.com",
-//     messagingSenderId: "230575406452",
-//     appId: "1:230575406452:web:fab98689e7446fb3064021",
-//     measurementId: "G-V2G6MGPNN5"
-//   };
-//   const messaging = firebase.messaging();
-//   messaging.onBackgroundMessage(function (payload) {
-//     console.log("Received background message ", payload);
-  
-//     const notificationTitle = payload.notification.title;
-//     const notificationOptions = {
-//       body: payload.notification.body,
-//     };
-  
-//     self.registration.showNotification(notificationTitle, notificationOptions);
-//   });
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});

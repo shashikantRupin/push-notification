@@ -23,9 +23,6 @@ function App() {
   Push Notification  </div>
 </div>
 
-
-
-
         </div>       
      </>
   );
