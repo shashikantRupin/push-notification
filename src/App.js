@@ -6,18 +6,14 @@ import Navbar from './Components/Navbar'
 function App() {
   return (
     <>
- 
       <div
-        // class="row align-items-center pt-5 pt-sm-4 pt-md-0 px-3 px-sm-4 px-lg-0 "
         style={{
           backgroundImage: `url(./images/4.jpg)`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           minHeight: "100vh",
-          position: "relative",
-        
-        
+          position: "relative",  
         }}
       >
       <Navbar/>
